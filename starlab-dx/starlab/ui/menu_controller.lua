@@ -245,7 +245,6 @@ return function(app)
             state.menu.screen == "home"
             or state.menu.screen == "session"
             or state.menu.screen == "recordHelp"
-            or state.menu.screen == "runPlan"
         )
                 and 3
             or 5
@@ -258,7 +257,7 @@ return function(app)
             rows = 4
         elseif state.menu.screen == "builder" then
             rows = 3
-        elseif state.menu.screen == "runReview" then
+        elseif state.menu.screen == "runReview" or state.menu.screen == "runPlan" then
             rows = 2
         elseif state.menu.screen == "timingHelp" then
             rows = 1

@@ -30,8 +30,6 @@ return function(app)
                     state.menu.screen, state.menu.row = "rename", 1
                 elseif state.menu.row == 2 then
                     state.menu.screen, state.menu.row = "builder", 1
-                else
-                    app.menu.back()
                 end
             end
             return true
@@ -74,8 +72,8 @@ return function(app)
                 148
             )
             app.menuView.menuRows(
-                { "NOMBRE OPCIONAL", "SIGUIENTE: ESTRELLAS", "OTRO ESPACIO" },
-                { routes.runName(), "Elegir niveles y cantidades", "Volver a mis runs" },
+                { "NOMBRE OPCIONAL", "SIGUIENTE: ESTRELLAS" },
+                { routes.runName(), "Elegir niveles y cantidades" },
                 x + 112,
                 y + 49,
                 176
@@ -134,17 +132,11 @@ return function(app)
                 231,
                 241
             )
-            app.menuView.menuRows(
-                { "INICIO DE RUN", "COMENZAR RUN" },
-                {
-                    state.settings.runFromIntro and "Intro / entrenamiento nuevo"
-                        or "Primer nivel / progreso actual",
-                    "Todo listo. Iniciar cronometro",
-                },
-                x + 112,
-                y + 49,
-                176
-            )
+            app.menuView.menuRows({ "INICIO DE RUN", "COMENZAR RUN" }, {
+                state.settings.runFromIntro and "Intro / entrenamiento nuevo"
+                    or "Primer nivel / progreso actual",
+                "Todo listo. Iniciar cronometro",
+            }, x + 112, y + 49, 176)
             return true
         end
         return false
