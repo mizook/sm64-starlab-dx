@@ -57,7 +57,6 @@ return function(app)
         local c = m.controller
         if
             state.training.active
-            and state.run.active
             and (get_current_save_file_num() ~= state.training.slot or not save_file_get_using_backup_slot())
         then
             practice.stop("No se pudo preparar el espacio de entrenamiento.")

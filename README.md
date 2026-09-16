@@ -2,7 +2,7 @@
 
 Mod de práctica y entrenamiento de speedruns de **Super Mario 64** para **SM64CoopDX 1.5.1**.
 
-**Versión:** 0.17.9 · **by carlo ignacio**
+**Versión:** 0.17.10 · **by carlo ignacio**
 
 StarLab DX permite repetir estrellas, guardar puntos de práctica y preparar rutas personalizadas con cronómetro y splits, sin salir del juego.
 
@@ -18,7 +18,7 @@ StarLab DX permite repetir estrellas, guardar puntos de práctica y preparar rut
 ## Instalación
 
 1. Descarga este repositorio mediante **Code → Download ZIP**, o clónalo.
-2. Copia la carpeta **`outputs/starlab-dx` completa** al directorio `mods` de SM64CoopDX.
+2. Copia la carpeta **`starlab-dx` completa** al directorio `mods` de SM64CoopDX.
 3. Comprueba que exista `mods/starlab-dx/main.lua` y que la carpeta `starlab` esté junto a ese archivo.
 4. Activa **StarLab DX** en la lista de mods e inicia una partida.
 5. Abre el menú con `/sl menu`.
@@ -30,6 +30,8 @@ No copies únicamente `main.lua`: necesita los módulos de la carpeta `starlab`.
 ### Practicar una estrella
 
 En **Inicio → Práctica individual**, elige nivel y estrella y selecciona **Practicar**. También puedes escribir `/sl bob 1` para practicar la primera estrella de Bob-omb Battlefield.
+
+Cada inicio o reinicio completo de práctica limpia las estrellas y los indicadores de progreso del **espacio de entrenamiento secundario**, antes de entrar al nivel. Así se recrean los objetos y diálogos que dependen de ese progreso; tu partida principal se conserva. Requiere ser anfitrión sin otros jugadores conectados. Cargar un punto parcial no reinicia el progreso del mundo.
 
 Durante la práctica:
 
@@ -74,6 +76,6 @@ El inicio desde intro utiliza un espacio de entrenamiento cuyo progreso se reini
 
 ## Contenido del repositorio
 
-El código instalable está en [`outputs/starlab-dx`](outputs/starlab-dx). `main.lua` es el punto de entrada y `starlab/` contiene los módulos de práctica, runs, interfaz y almacenamiento.
+El código instalable está en [`starlab-dx`](starlab-dx). `main.lua` es el punto de entrada y `starlab/` contiene los módulos de práctica, runs, interfaz y almacenamiento.
 
 Este repositorio contiene el código del mod, sin ROM ni ejecutable del juego. Las notas internas, pruebas locales, respaldos y paquetes generados quedan fuera del repositorio.

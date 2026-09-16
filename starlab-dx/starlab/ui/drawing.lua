@@ -82,16 +82,20 @@ return function(app)
             djui_hud_render_rect(x, y + 2, size, size - 4)
             djui_hud_set_color(223, 232, 245, 255)
             djui_hud_render_rect(x + 1, y + 1, size - 2, 2)
-            local scale = size / 44
-            drawing.drawText(
-                "L",
-                x + (size - djui_hud_measure_text("L") * scale) / 2,
-                y + 1,
-                scale,
-                24,
-                39,
-                70
-            )
+            -- Pixel strokes stay readable at 6-12 units, unlike the scaled HUD font.
+            -- Keep the existing shoulder-button silhouette and occupied bounds.
+            local stroke = math.max(1, math.floor(size / 7))
+            local letterW = math.max(3, math.floor(size * 0.4))
+            local letterH = math.max(3, math.floor(size * 0.55))
+            local lx = x + math.floor((size - letterW) / 2)
+            local ly = y + 1 + math.floor((size - 3 - letterH) / 2)
+            if enabled == false then
+                iconColor(16, 24, 38, 185)
+            else
+                iconColor(16, 24, 38, 255)
+            end
+            djui_hud_render_rect(lx, ly, stroke, letterH)
+            djui_hud_render_rect(lx, ly + letterH - stroke, letterW, stroke)
             return
         end
         local r, g, b =

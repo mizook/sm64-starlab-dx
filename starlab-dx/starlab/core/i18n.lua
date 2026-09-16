@@ -6,6 +6,10 @@ return function(app)
     local menu = app.menu
 
     local english = {
+        {
+            "La practica desde cero requiere anfitrion sin otros jugadores.",
+            "Fresh practice requires hosting without other players.",
+        },
         { "Volver al apartado anterior", "Return to previous screen" },
         { "EDITAR ORDEN", "EDIT ORDER" },
         {

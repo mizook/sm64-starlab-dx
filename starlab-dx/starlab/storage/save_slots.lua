@@ -50,21 +50,27 @@ return function(app)
         state.training = { active = false }
     end
 
-    function saveSlots.beginTraining()
+    function saveSlots.beginTraining(forPractice)
         local function fail(text)
             state.practice.message = text
             i18n.say(text)
             return false
         end
         if not network_is_server() then
-            return fail("La run desde cero requiere anfitrion sin otros jugadores.")
+            return fail(
+                forPractice and "La practica desde cero requiere anfitrion sin otros jugadores."
+                    or "La run desde cero requiere anfitrion sin otros jugadores."
+            )
         end
         for i = 1, MAX_PLAYERS - 1 do
             if gNetworkPlayers[i] and gNetworkPlayers[i].connected then
-                return fail("La run desde cero requiere anfitrion sin otros jugadores.")
+                return fail(
+                    forPractice and "La practica desde cero requiere anfitrion sin otros jugadores."
+                        or "La run desde cero requiere anfitrion sin otros jugadores."
+                )
             end
         end
-        if gLevelValues.entryLevel ~= LEVEL_CASTLE_GROUNDS then
+        if not forPractice and gLevelValues.entryLevel ~= LEVEL_CASTLE_GROUNDS then
             return fail("La intro requiere el inicio original del juego base.")
         end
         local slot = get_current_save_file_num()

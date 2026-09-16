@@ -59,6 +59,17 @@ return function(app)
         end
         if keepRun ~= true then
             state.run.active, state.run.finished = false, false
+            -- Every full-star attempt starts with fresh training progress before
+            -- level objects/dialogs initialize. A run's intermediate warps keep it.
+            saveSlots.releaseTraining()
+            if not saveSlots.beginTraining(true) then
+                state.practice.phase = "stopped"
+                records.publish()
+                return
+            end
+            if m then
+                m.numStars, m.numKeys = 0, 0
+            end
         end
         state.menu.open = false
         -- Mark pending BEFORE requesting the warp; never time the old level.

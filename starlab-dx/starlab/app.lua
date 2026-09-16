@@ -36,7 +36,7 @@ function M.start()
     end
     -- Allocate API tables before wiring modules. Cross-module calls happen only
     -- after installation; modules never recursively require one another.
-    local app = { version = "0.17.9", state = createState() }
+    local app = { version = "0.17.10", state = createState() }
     app.catalog = {}
     app.i18n = {}
     app.format = {}

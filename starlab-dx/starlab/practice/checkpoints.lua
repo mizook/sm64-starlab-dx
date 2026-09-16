@@ -85,6 +85,7 @@ return function(app)
         return point ~= nil
             and point.key == state.practice.challengeKey
             and point.slot == get_current_save_file_num()
+            and point.backup == save_file_get_using_backup_slot()
             and point.level == p.currLevelNum
             and point.area == p.currAreaIndex
             and point.act == p.currActNum
@@ -122,6 +123,7 @@ return function(app)
         state.checkpoints.saved = {
             key = state.practice.challengeKey,
             slot = get_current_save_file_num(),
+            backup = save_file_get_using_backup_slot(),
             level = p.currLevelNum,
             area = p.currAreaIndex,
             act = p.currActNum,
