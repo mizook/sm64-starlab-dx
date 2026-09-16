@@ -13,11 +13,20 @@ return function(app)
     -- Reuse the same N64 button primitives as menus and the run overlay.
     local function checkpointControls(x, y, compact)
         local function hint(button, label, column, row, enabled)
-            local hx, hy = x + column * 86, y + row * (compact and 9 or 12)
+            local hx, hy = x + column * (compact and 86 or 64), y + row * 9
             drawing.buttonIcon("L", hx, hy, compact and 6 or 7, enabled)
             drawing.buttonIcon(button, hx + 9, hy, compact and 6 or 7, enabled)
             local shade = enabled and 222 or 139
-            drawing.fitted(label, hx + 19, hy + 1, compact and 0.16 or 0.18, 64, shade, shade, shade)
+            drawing.fitted(
+                label,
+                hx + 19,
+                hy + 1,
+                compact and 0.16 or 0.18,
+                compact and 64 or 42,
+                shade,
+                shade,
+                shade
+            )
         end
         hint("left", "Guardar punto", 0, 0, state.practice.phase == "running")
         hint("right", "Cargar punto", 1, 0, app.checkpoints.canLoad())
@@ -65,7 +74,7 @@ return function(app)
         then
             local y = djui_hud_get_screen_height() - 39
             djui_hud_set_color(8, 14, 22, 150)
-            djui_hud_render_rect(8, y, 288, 32)
+            djui_hud_render_rect(8, y, 220, 32)
             drawing.drawText(
                 state.practice.phase == "pending" and "LISTO..." or format.fmt(state.practice.frames),
                 12,
@@ -79,17 +88,17 @@ return function(app)
                 12,
                 y + 22,
                 0.18,
-                85,
+                78,
                 173,
                 195,
                 203
             )
             if state.checkpoints.saved then
                 djui_hud_set_color(255, 211, 78, 255)
-                djui_hud_render_rect(106, y + 25, 2, 2)
+                djui_hud_render_rect(92, y + 25, 2, 2)
             end
             -- Keep shortcuts visible beside the timer without changing HUD height.
-            checkpointControls(118, y + 6)
+            checkpointControls(98, y + 10)
             djui_hud_set_color(255, 255, 255, 255)
             return
         end
