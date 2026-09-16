@@ -502,13 +502,17 @@ return function(app)
                 drawing.fitted(
                     routes.routeSummary(state.editor.route),
                     x + 12,
-                    y + 170,
-                    0.25,
+                    y + 163,
+                    0.18,
                     94,
                     255,
                     211,
                     78
                 )
+                local runPB = #state.editor.route > 0
+                        and tonumber(mod_storage_load(routes.routeKey() .. "_pb"))
+                    or nil
+                drawing.drawText("PB " .. format.fmt(runPB), x + 12, y + 183, 0.41, 255, 211, 78)
                 drawing.wrapped(help[state.menu.row], x + 120, y + 157, 0.24, 160, 3, 190, 210, 233)
             else
                 if #state.editor.route == 0 then
