@@ -1,0 +1,13 @@
+# Publish only the mod runtime and its public README.
+/*
+!/.gitignore
+!/README.md
+!/outputs/
+/outputs/*
+!/outputs/starlab-dx/
+/outputs/starlab-dx/*
+!/outputs/starlab-dx/main.lua
+!/outputs/starlab-dx/starlab/
+/outputs/starlab-dx/starlab/**/*
+!/outputs/starlab-dx/starlab/**/
+!/outputs/starlab-dx/starlab/**/*.lua
